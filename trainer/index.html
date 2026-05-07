@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prasad Fitness Gym</title>
+
+<meta name="description" content="Prasad Fitness Gym – Personal training, strength training and body transformation.">
+<meta name="keywords" content="gym, fitness, personal trainer">
+<meta name="author" content="Prasad Fitness">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+html{scroll-behavior:smooth}
+body{background:#0c0c0c;color:#fff;overflow-x:hidden}
+
+/* ================= NAVBAR ================= */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:8px 20px; /* smaller padding for normal height */
+  height:60px; /* normal professional height */
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(10px);
+  z-index:1000;
+  transition:0.3s;
+}
+header.scrolled{
+  background:rgba(0,0,0,0.85);
+}
+.logo{color:#00ff99;font-size:22px;font-weight:700}
+nav{display:flex;gap:25px}
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  position:relative;
+  transition:0.3s;
+}
+nav a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-5px;
+  width:0;
+  height:2px;
+  background:#00ff99;
+  transition:.3s;
+}
+nav a:hover::after{width:100%}
+.menu-btn{display:none;font-size:26px;cursor:pointer}
+
+/* ================= HERO ================= */
+.hero{
+  height:60vh;
+  background:url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48") center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+  position:relative;
+  overflow:hidden;
+}
+.hero p{color:#ffffffc2;margin:12px 0 22px;font-size:20px}
+.hero a{
+  padding:12px 30px;
+  background:#00ff99;
+  color:#000;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+}
+.hero a:hover{transform:scale(1.05);}
+
+/* MOVING H1 EFFECT */
+.moving-title{
+  font-size:50px;
+  font-weight:800;
+  background:linear-gradient(90deg,#00ff99,#09a2cc,#00ff99);
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation: floatText 3.5s ease-in-out infinite, shine 4s linear infinite;
+  transition:0.3s;
+}
+@keyframes floatText{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+  100%{transform:translateY(0)}
+}
+@keyframes shine{
+  to{background-position:200% center}
+}
+/* ================= SECTIONS ================= */
+section{padding:90px 20px;opacity:0;transform:translateY(40px);transition:1s ease}
+section.active{opacity:1;transform:translateY(0)}
+h2{text-align:center;margin-bottom:40px}
+
+/* SERVICES */
+.services-wrapper{
+  display:flex;
+  justify-content:center;
+  padding:24px 10px;
+}
+
+.services{
+  width:100%;
+  max-width:720px;              /* 👈 desktop lo wider */
+  background:linear-gradient(180deg,#0f0f0f,#0b0b0b);
+  border-radius:18px;
+  padding:14px 12px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  justify-content:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.6);
+  border:1px solid rgba(0,255,153,.15);
+  position:relative;
+  overflow:hidden;
+}
+
+/* glow border */
+.services::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius:18px;
+  background:linear-gradient(120deg, transparent, rgba(0,255,153,.35), transparent);
+  opacity:.4;
+  animation:shineBorder 4s linear infinite;
+}
+
+@keyframes shineBorder{
+  0%{transform:translateX(-100%)}
+  100%{transform:translateX(100%)}
+}
+
+.card{
+  position:relative;
+  z-index:1;
+  background:rgba(26,26,26,.9);
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:12.5px;
+  font-weight:600;
+  letter-spacing:.2px;
+  color:#e5fff4;
+  border:1px solid rgba(0,255,153,.25);
+  backdrop-filter: blur(6px);
+  transition:.2s ease;
+}
+
+.card:hover{
+  transform:translateY(-2px) scale(1.04);
+  background:#00ff99;
+  color:#000;
+  box-shadow:0 0 14px rgba(0,255,153,.6);
+}
+
+/* Tablet */
+@media(max-width:768px){
+  .services{
+    max-width:90%;
+  }
+}
+
+/* Mobile */
+@media(max-width:480px){
+  .services{
+    max-width:92%;   /* mobile lo compact */
+    padding:12px 10px;
+    gap:6px;
+  }
+  .card{
+    padding:7px 12px;
+    font-size:12px;
+  }
+}
+
+/* entry animation */
+.card{
+  opacity:0;
+  transform:scale(.9);
+}
+.card.show{
+  opacity:1;
+  transform:scale(1);
+  transition:.4s ease;
+}
+
+
+
+header {
+  height: 60 px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  height: 290px;
+   margin-top:auto;
+   margin-bottom:-8px;
+  transition: 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  header {
+    height: 55px;
+  }
+
+  .logo img {
+    height: 260px;
+    margin-top:auto;
+    margin-bottom:-8px;
+  }
+}
+/* SCROLL BUTTONS */
+.scroll-btn {
+  background:#00ff99;
+  border: none;
+  color: #000;
+  font-size: 22px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.scroll-btn:hover {
+  transform: scale(1.1);
+}
+
+.scroll-btn.left {
+  margin-right: 10px;
+}
+
+.scroll-btn.right {
+  margin-left: 10px;
+}
+
+.card{
+  background:#1a1a1a;
+  padding:30px;
+  border-radius:18px;
+  text-align:center;
+  transition:0.4s;
+
+}
+.card:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 25px rgba(0,255,153,.5);
+}
+
+/* ================= ACHIEVEMENTS ================= */
+.stats{background:#111}
+.stats-grid{
+  max-width:1000px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:25px;
+}
+.stat-box{
+  background:#1a1a1a;
+  padding:35px;
+  border-radius:18px;
+  text-align:center;
+  transition:0.4s;
+}
+.stat-box:hover{transform:scale(1.05);}
+.stat-box h3{font-size:38px;color:#00ff99}
+.stat-box p{color:#aaa;font-size:14px}
+
+/* ================= PRICING ================= */
+.pricing-grid{
+  max-width:1000px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+.price-card{
+  background:#1a1a1a;
+  padding:30px;
+  border-radius:18px;
+  text-align:center;
+  transition:0.4s;
+}
+.price-card:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 25px rgba(0,255,153,.5);
+}
+.price-card h3{font-size:24px;color:#00ff99;margin-bottom:15px}
+.price-card .price{font-size:28px;color:#fff;margin-bottom:15px}
+.price-card ul{list-style:none;color:#ccc;margin-bottom:20px}
+.price-card ul li{margin-bottom:8px}
+.price-card button{
+  padding:10px 25px;
+  border:none;
+  background:#00ff99;
+  color:#000;
+  border-radius:30px;
+  cursor:pointer;
+  font-weight:600;
+  transition:0.3s;
+}
+.price-card button:hover{transform:scale(1.05);}
+
+/* ================= CONTACT ================= */
+.contact-box{
+  max-width:500px;
+  margin:auto;
+  background:#1a1a1a;
+  padding:35px;
+  border-radius:18px;
+  text-align:center;
+}
+.contact-box a{
+  display:inline-block;
+  padding:14px 35px;
+  background:#00ff99;
+  color:#000;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+}
+.contact-box a:hover{transform:scale(1.05);}
+
+/* ================= MAP ================= */
+.map iframe{
+  width:100%;
+  height:350px;
+  border:0;
+  border-radius:18px;
+  transition:0.5s;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  background:#000;
+  text-align:center;
+  padding:20px;
+  color:#aaa;
+  font-size:14px;
+  opacity:0;
+  transform:translateY(20px);
+  transition:1s ease;
+}
+footer.active{opacity:1;transform:translateY(0);}
+
+/* ================= CALL & WHATSAPP BUTTON ================= */
+.call-btn{
+  position:fixed;
+  bottom:90px;
+  right:20px;
+  width:55px;
+  height:55px;
+  background:#00ff99;
+  color:#000;
+  font-size:26px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  text-decoration:none;
+  box-shadow:0 0 20px rgba(0,255,153,.6);
+  z-index:999;
+  transition:0.3s;
+}
+.call-btn:hover{transform:scale(1.1);box-shadow:0 0 30px rgba(0,255,153,.8);}
+.whatsapp-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:55px;
+  height:55px;
+  background:#25D366;
+  color:#fff;
+  font-size:26px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  text-decoration:none;
+  box-shadow:0 0 20px rgba(37,211,102,.6);
+  z-index:999;
+  transition:0.3s;
+}
+.whatsapp-btn:hover{transform:scale(1.1);box-shadow:0 0 30px rgba(37,211,102,.8);}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .moving-title{font-size:34px}
+  nav{
+    position:absolute;
+    top:60px; /* match header height */
+    right:20px;
+    background:#000;
+    flex-direction:column;
+    padding:20px;
+    border-radius:14px;
+    display:none;
+  }
+  nav.active{display:flex}
+  .menu-btn{display:block}
+}
+#about-section {
+  display: none; /* hidden initially */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s ease;
+}
+#about-section.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+@keyframes blink { 50% { border-color: transparent; } }
+
+.email-btn {
+  display: inline-block;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #d4af37, #b8962e);
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.email-btn:hover {
+  background: linear-gradient(135deg, #b8962e, #d4af37);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+.footer {
+  background: #000;
+  color: #ccc;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 14px;
+}
+
+.footer a {
+  color: #ededed;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 5px;
+  transition: 0.3s;
+}
+
+.footer a:hover {
+  color: #fff;
+}
+@media (max-width: 600px) {
+  .footer {
+    font-size: 12px;
+    padding: 15px 5px;
+  }
+}
+
+
+</style>
+</head>
+<body>
+
+
+<header>
+  <div class="logo">
+            <img src="images/ok.png" alt="Prasad Fitness Logo">
+        </div>
+
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  <nav id="nav">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+<a href="#about" onclick="showAbout(event)">About</a>
+   <a href="clients.html" target="_blank">Clients</a>
+    <a href="#contact">Contact</a>
+  
+
+    
+
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero" id="home">
+  <div>
+    <h1 class="moving-title">Train Hard. Stay Strong.</h1>
+    <p>Never Compromise Your Fitness</p>
+    <a href="#" id="joinBtn" class="join-btn">Join Now</a>
+
+  </div>
+</div>
+
+
+<!-- SERVICES -->
+<section id="services">
+  <h2>Our Services</h2>
+      <div class="services-wrapper">
+  <div class="services-box">   <!-- 👈 single container box -->
+    <div class="services">
+      <div class="card">Personal Training</div>
+      <div class="card">Weight Loss</div>
+      <div class="card">Strength Training</div>
+      <div class="card">Body Transformation</div>
+      <div class="card">Nutrition Guidance</div>
+    </div>
+
+
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements" class="stats">
+  <h2>Our Achievements</h2>
+  <div class="stats-grid">
+    <div class="stat-box">
+      <h3 class="counter plus-counter" data-target="500">0</h3>
+      <p>Happy Members</p>
+    </div>
+    <div class="stat-box">
+      <h3 class="counter" data-target="12">0</h3>
+      <p>Certified Trainers</p>
+    </div>
+    <div class="stat-box">
+      <h3 class="counter" data-target="6">0</h3>
+      <p>Years Experience</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <h2>Membership Plans</h2>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <h3>Basic</h3>
+      <p class="price">₹499 / Month</p>
+      <ul>
+        <li>Gym/Home workouts</li>
+        <li>Doubt session/1xweek</li>
+        <li>live session/1xweek</li>
+     <button onclick="openMembership('Basic')" class="plan-btn" id="plan-Basic">Join Now</button>
+
+    </div>
+    <div class="price-card">
+      <h3>Standard</h3>
+      <p class="price">₹799 / Month</p>
+      <ul>
+        <li>All Basic Features</li>
+        <li>Group Classes</li>
+        <li>Personal Trainer 3x/Week</li>
+      </ul>
+      <button onclick="openMembership('Standard')" class="plan-btn">Join Now</button>
+
+    </div>
+    <div class="price-card">
+      <h3>Premium</h3>
+      <p class="price">₹999 / Month</p>
+      <ul>
+        <li>All Standard Features</li>
+        <li>Unlimited Personal Training</li>
+        <li>Nutrition Plan</li>
+      </ul>
+     <button onclick="openMembership('Premium')" class="plan-btn">Join Now</button>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<!-- ================= CONTACT SECTION ================= -->
+<section id="contact" style="padding:60px 20px; background:#111; color:#fff; text-align:center;">
+  <h2 style="color:#00ff99; margin-bottom:25px; font-size:28px;">Contact Us</h2>
+
+  <p style="color:#ccc; margin-bottom:30px; font-size:16px;">
+    Have questions or want to join? Reach out to us directly:
+  </p>
+
+  <div style="max-width:300px; margin:auto; display:flex; flex-direction:column; gap:15px;">
+    <a href="https://wa.me/918333044598?text=Hi%20Prasad%20Fitness,%20I%20want%20to%20know%20more"
+   target="_blank"
+   rel="noopener"
+   class="whatsapp-contact-btn">
+   💬 WhatsApp Us
+</a>
+
+
+
+  </div>
+</section>
+
+<!-- MAP -->
+<section id="location" class="map">
+  <h2>Our Location</h2>
+  <iframe src="https://www.google.com/maps?q=Tadepalligudem&output=embed"></iframe>
+</section>
+
+<!-- CALL & WHATSAPP -->
+ <style>
+/* CONTACT WHATSAPP BUTTON */
+.whatsapp-contact-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:14px 20px;
+  background:#25D366;
+  color:#fff;
+  text-decoration:none;   /* 👈 underline remove */
+  border-radius:40px;
+  font-weight:600;
+  font-size:16px;
+  box-shadow:0 8px 20px rgba(37,211,102,0.4);
+  transition:0.3s ease;
+}
+
+.whatsapp-contact-btn:hover{
+  transform:translateY(-2px) scale(1.02);
+  box-shadow:0 12px 28px rgba(37,211,102,0.6);
+}
+
+/* Mobile polish */
+@media(max-width:480px){
+  .whatsapp-contact-btn{
+    width:100%;
+    font-size:15px;
+    padding:14px 16px;
+  }
+}
+#about-section img:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 70px rgba(0,255,153,0.9);
+}
+#about-section a:hover{
+  transform:scale(1.05);
+}
+</style>
+<!-- ABOUT SECTION -->
+<!-- ABOUT BUTTON in NAV -->
+
+<!-- ABOUT BUTTON in NAV -->
+<!-- ABOUT SECTION (Initially Hidden) -->
+<section id="about-section" style="display:none; padding:80px 20px; background:#111; color:#fff; text-align:center; border-top:4px solid #00ff99; border-bottom:4px solid #00ff99;">
+  <div style="max-width:900px; margin:auto;">
+    <h2 style="color:#00ff99; font-size:36px; margin-bottom:50px;">
+    Meet Your Trainer
+  </h2>
+
+  <div style="max-width:1000px; margin:auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:60px;">
+
+    <!-- Trainer Photo -->
+    <div>
+      <img src="images/image.jpg" alt="Prasad Fitness Trainer"
+           style="width:320px; height:320px; object-fit:cover; border-radius:50%; 
+                  border:6px solid #00ff99; 
+                  box-shadow:0 0 50px rgba(0,255,153,0.6);
+                  transition:0.4s;">
+    </div>
+
+    <!-- Trainer Info -->
+    <div style="max-width:450px; text-align:left;">
+
+      <h3 style="color:#fff; font-size:32px; margin-bottom:10px;">
+        Prasad
+      </h3>
+
+      <p style="color:#00ff99; font-weight:bold; margin-bottom:20px;">
+        Certified Fitness Trainer | Transformation Coach
+      </p>
+
+      <p style="color:#ccc; line-height:1.8; font-size:16px; margin-bottom:26px;">
+     <strong>With years of experience in personal training and body transformation, I specialize in helping individuals achieve sustainable results through structured workouts, personalized nutrition plans, and disciplined lifestyle strategies. My approach focuses on building strength, enhancing confidence, and promoting long-term wellness tailored to each client’s unique goals.
+Whether your aim is weight loss, muscle gain, or overall health optimization, I provide expert guidance, motivation, and support every step of the way.
+
+Follow my journey on Instagram to stay inspired and learn practical fitness tips.</strong>
+      </p>
+      
+
+      <!-- Instagram Button -->
+      <a href="https://instagram.com/flexwithprasad" target="_blank"
+         style="display:inline-block; padding:12px 28px; 
+                background:#00ff99; color:#000; 
+                border-radius:30px; text-decoration:none; 
+                font-weight:bold; transition:0.3s;">
+        Follow on Instagram
+      </a>
+
+    </div>
+
+  </div>
+  </div>
+</section>
+<!-- QUICK LINKS SECTION -->
+<section id="quick-links" style="
+    background:#111; 
+    color:#fff; 
+    padding:20px 0; 
+    text-align:center; 
+    border-top:4px solid #00ff99;
+">
+  <div style="max-width:900px; margin:auto; display:flex; flex-wrap:wrap; justify-content:center; gap:20px;">
+    <a href="#home" style="color:#00ff99; text-decoration:none; font-weight:600; transition:0.3s;">Home</a>
+    <a href="#services" style="color:#00ff99; text-decoration:none; font-weight:600; transition:0.3s;">Services</a>
+    <a href="javascript:void(0)" onclick="toggleAbout()" style="color:#00ff99; text-decoration:none; font-weight:600; transition:0.3s;">About</a>
+    <a href="#contact" style="color:#00ff99; text-decoration:none; font-weight:600; transition:0.3s;">Contact</a>
+    <a href="clients.html" target="_blank" style="color:#00ff99; text-decoration:none; font-weight:600; transition:0.3s;">Clients</a>
+  </div>
+</section>
+<!-- JOIN NOW BUTTON (example inside hero) -->
+
+
+
+<!-- ================= MEMBERSHIP FORM POPUP ================= -->
+<div id="membership-section" class="modal">
+  <div class="modal-box">
+    <h2>Join Prasad Fitness</h2>
+
+    <form id="membershipForm">
+      <input type="text" name="fullname" placeholder="Full Name" required>
+      <input type="number" name="age" placeholder="Age" required>
+      <input type="tel" name="mobile" placeholder="Mobile Number" required>
+      <input type="number" name="height" placeholder="Height (cm)" required>
+      <input type="number" name="weight" placeholder="Weight (kg)" required>
+      <!-- Service Selection -->
+<!-- Service -->
+<select name="service" required>
+  <option value="" hidden selected>Select Service</option>
+  <option value="Personal Training">Personal Training</option>
+  <option value="Weight Loss">Weight Loss</option>
+  <option value="Strength Training">Strength Training</option>
+  <option value="Body Transformation">Body Transformation</option>
+  <option value="Nutrition Guidance">Nutrition Guidance</option>
+</select>
+
+<!-- Plan -->
+<select name="plan" id="planSelect" required>
+
+  <option value="" hidden selected>Select Plan</option>
+  <option value="Basic">Basic</option>
+  <option value="Standard">Standard</option>
+  <option value="Premium">Premium</option>
+</select>
+
+
+      <button type="submit" id="submitBtn" class="primary-btn">Submit</button>
+    </form>
+
+    <button onclick="closeMembership()" class="cancel-btn">Cancel</button>
+  </div>
+</div>
+
+
+<!-- ================= SUCCESS POPUP ================= -->
+<div id="successPopup" class="success-popup">
+  <div class="success-content">
+    <div class="success-icon">✅</div>
+    <h3>Registration Successful!</h3>
+    <p>Welcome to Prasad Fitness 💪</p>
+    <button onclick="closeSuccess()">Continue</button>
+  </div>
+</div>
+
+<!-- ================= ALREADY REGISTERED POPUP ================= -->
+<div id="alreadyPopup" class="success-popup">
+  <div class="success-content">
+    <div class="success-icon">✔️</div>
+    <h3>Already Registered!</h3>
+    <p>You have already joined Prasad Fitness 💪</p>
+    <button onclick="closeAlready()">Okay</button>
+  </div>
+</div>
+
+
+<!-- ================= CSS ================= -->
+<style>
+
+/* Join Button */
+.join-btn{
+  padding:12px 28px;
+  background:#00ff99;
+  color:#000;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+}
+.modal-box select{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:8px;
+  border:none;
+  font-size:16px;
+}
+
+
+/* COMMON MODAL */
+.modal,
+.success-popup{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  z-index:9999;
+}
+
+/* FORM BOX */
+.modal-box{
+  background:#1D2A38;
+  width:100%;
+  max-width:420px;
+  padding:40px 30px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 15px 40px rgba(0,0,0,.6);
+  animation:pop .3s ease;
+}
+
+.modal-box h2{
+  color:#00ff99;
+  margin-bottom:20px;
+}
+
+/* Inputs */
+.modal-box input{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:8px;
+  border:none;
+  font-size:16px;
+}
+
+/* Buttons */
+.primary-btn{
+  width:100%;
+  padding:14px;
+  background:#00ff99;
+  color:#000;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+.cancel-btn{
+  margin-top:15px;
+  background:none;
+  border:none;
+  color:#00ff99;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+/* SUCCESS BOX */
+.success-content{
+  background:#1D2A38;
+  width:100%;
+  max-width:340px;
+  padding:35px 25px;
+  border-radius:18px;
+  text-align:center;
+  animation:pop .3s ease;
+  box-shadow:0 20px 40px rgba(0,0,0,.6);
+}
+
+.success-icon{
+  font-size:60px;
+  margin-bottom:15px;
+}
+
+.success-content h3{
+  color:#22c55e;
+  margin-bottom:10px;
+}
+
+.success-content p{
+  color:#cbd5e1;
+  font-size:15px;
+  margin-bottom:20px;
+}
+
+.success-content button{
+  padding:12px 28px;
+  background:#00ff99;
+  border:none;
+  color:#000;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+/* Animation */
+@keyframes pop{
+  from{transform:scale(.85);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+</style>
+
+
+<!-- ================= SCRIPT ================= -->
+
+<script>
+const membershipForm = document.getElementById("membershipForm");
+const submitBtn = document.getElementById("submitBtn");
+const successPopup = document.getElementById("successPopup");
+const alreadyPopupBox = document.getElementById("alreadyPopup");
+function closeMembership(){
+  document.getElementById("membership-section").style.display = "none";
+  membershipForm.reset();
+  
+}
+
+function closeAlready() {
+  // 1️⃣ Close Already Registered popup
+  const alreadyPopup = document.getElementById("alreadyPopup");
+  alreadyPopup.style.display = "none";
+
+  // 2️⃣ Close Membership Form popup
+  const membershipSection = document.getElementById("membership-section");
+  membershipSection.style.display = "none";
+
+  // 3️⃣ Reset form safely
+  const membershipForm = document.getElementById("membershipForm");
+  if (membershipForm) membershipForm.reset();
+
+  // 4️⃣ Redirect / Scroll to Home
+  const homeSection = document.getElementById("home");
+  if (homeSection) {
+    const headerOffset = 60;
+    const elementPosition = homeSection.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });
+  }
+}
+
+
+
+membershipForm.addEventListener("submit", function(e){
+  e.preventDefault(); // 🛑 prevents page reload
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Checking...";
+
+  const mobile = membershipForm.mobile.value;
+
+  fetch("https://script.google.com/macros/s/AKfycbzn-aqIcZ82JI11jZVQELl2eWMCxY08w6I0dOJIchmmLiNjrlASRaYsfemhwGDqmh1W/exec?mobile=" + mobile)
+  .then(res => res.text())
+  .then(response => {
+response = response.trim();  // ⭐ FIX
+if(response.startsWith("EXISTS")){
+
+  alreadyPopupBox.style.display = "flex";
+
+  const parts = response.split("|");
+  const userPlan = parts[1]; // user's plan from sheet
+
+  const joinBtn = document.getElementById("joinBtn");
+  joinBtn.textContent = "Welcome to Prasad Fitness 💪";
+  joinBtn.style.pointerEvents = "none";
+  joinBtn.style.background = "#22c55e";
+
+  document.querySelectorAll(".plan-btn").forEach(btn=>{
+
+    if(btn.closest(".price-card").querySelector("h3").innerText === userPlan){
+
+      btn.textContent = "Your Plan 💪";
+      btn.style.background = "#22c55e";
+      btn.disabled = true;
+
+    } else {
+
+      btn.disabled = true;
+      btn.style.background = "#555";
+      btn.style.cursor = "not-allowed";
+    }
+
+  });
+
+  submitBtn.disabled = false;
+  submitBtn.textContent = "Submit";
+  return;
+}
+
+
+
+    // SAVE NEW DATA
+    fetch("https://script.google.com/macros/s/AKfycbzn-aqIcZ82JI11jZVQELl2eWMCxY08w6I0dOJIchmmLiNjrlASRaYsfemhwGDqmh1W/exec", {
+      method:"POST",
+      body:new FormData(membershipForm)
+    })
+    .then(() => {
+      membershipForm.reset();
+      document.getElementById("membership-section").style.display = "none";
+      successPopup.style.display = "flex";
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit";
+
+      
+    });
+
+  })
+  .catch(() => {
+    alert("Error occurred");
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Submit";
+  });
+});
+function closeSuccess(){
+  document.getElementById("successPopup").style.display = "none";
+}
+
+// 🔹 FUNCTION TO UPDATE HERO BUTTON AND PLAN BUTTONS
+function updateUIAfterRegistration(userPlan){
+  const joinBtn = document.getElementById("joinBtn");
+  const planButtons = document.querySelectorAll(".plan-btn");
+
+  // Hero button
+  joinBtn.textContent = "Welcome to Prasad Fitness 💪";
+  joinBtn.style.pointerEvents = "none";
+  joinBtn.style.background = "#22c55e";
+
+  // Plan buttons
+  planButtons.forEach(btn => {
+    const planName = btn.closest(".price-card").querySelector("h3").innerText;
+    if(planName === userPlan){
+      btn.textContent = "Your Plan 💪";
+      btn.style.background = "#22c55e";
+      btn.disabled = true;
+    } else {
+      btn.disabled = true;
+      btn.style.background = "#555";
+      btn.style.cursor = "not-allowed";
+    }
+  });
+}
+</script>
+
+
+
+<!-- SCRIPT TO SHOW ABOUT AND SCROLL EFFECT -->
+<script>
+// SHOW ABOUT ON CLICK
+function showAbout(e){
+  e.preventDefault();
+  const aboutSection = document.getElementById("about-section");
+  aboutSection.style.display = "block";
+
+  const headerOffset = 60;
+  const elementPosition = aboutSection.getBoundingClientRect().top;
+  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  window.scrollTo({top: offsetPosition, behavior: 'smooth'});
+}
+
+// INDIVIDUAL SCROLL ANIMATION
+const fadeItems = document.querySelectorAll('#about-section .fade-item');
+const aboutObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.style.opacity = 1;
+      entry.target.style.transform = 'translateY(0)';
+      entry.target.style.transition = 'all 0.8s ease-out';
+    }
+  });
+},{threshold:0.3});
+
+fadeItems.forEach(item => {
+  item.style.opacity = 0;
+  item.style.transform = 'translateY(40px)';
+  aboutObserver.observe(item);
+});
+
+// CARD HOVER EFFECT
+const aboutCards = document.querySelectorAll('#about-section .card');
+aboutCards.forEach(card=>{
+  card.addEventListener('mouseover', ()=>{
+    card.style.transform='translateY(-10px)';
+    card.style.boxShadow='0 12px 30px rgba(0,255,153,0.6)';
+  });
+  card.addEventListener('mouseout', ()=>{
+    card.style.transform='translateY(0)';
+    card.style.boxShadow='0 6px 20px rgba(0,255,153,0.4)';
+  });
+});
+</script>
+<script>
+  document.querySelectorAll('.card').forEach((c,i)=>{
+    setTimeout(()=>c.classList.add('show'), i*80);
+  });
+</script>
+
+<script>
+function openMembership(planName){
+
+  const membershipSection = document.getElementById("membership-section");
+  const planDropdown = document.getElementById("planSelect");
+
+  membershipSection.style.display = "flex";
+
+  if(planName){
+    planDropdown.value = planName;
+  } else {
+    planDropdown.value = "";
+  }
+}
+// JOIN NOW HERO BUTTON
+const joinBtn = document.getElementById("joinBtn");
+
+joinBtn.addEventListener("click", function(e){
+  e.preventDefault();
+  openMembership();
+});
+
+</script>
+<footer class="footer">
+  <div class="footer-content">
+    © 2026 Prasad Fitness Gym | All Rights Reserved |
+  <a href="mailto:prasadfittness9@gmail.com"></a>
+      prasadfittness9@gmail.com
+    </a>
+  </div>
+</footer>
+
+
+<script>
+// MENU TOGGLE
+function toggleMenu(){document.getElementById("nav").classList.toggle("active");}
+
+// SECTION REVEAL ON SCROLL
+const sections = document.querySelectorAll("section");
+const footer = document.querySelector("footer");
+window.addEventListener("scroll", ()=>{
+  const scrollY = window.scrollY + window.innerHeight;
+  sections.forEach(sec=>{
+    if(scrollY > sec.offsetTop + 100){sec.classList.add("active");}
+  });
+  if(scrollY > footer.offsetTop - 100){footer.classList.add("active");}
+});
+
+// SMOOTH SCROLL NAV LINKS
+document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e){
+    e.preventDefault();
+    const targetId = this.getAttribute('href').substring(1);
+    const target = document.getElementById(targetId);
+    if(target){
+      const headerOffset = 60; // matches new header height
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({top: offsetPosition, behavior: 'smooth'});
+      document.getElementById("nav").classList.remove("active");
+    }
+  });
+});
+
+// ACHIEVEMENT COUNTER
+const counters = document.querySelectorAll(".counter");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+
+      counters.forEach(counter => {
+
+        if (counter.classList.contains("started")) return;
+
+        counter.classList.add("started");
+
+        const target = +counter.dataset.target;
+        let count = 0;
+        const speed = target / 120;
+
+        function update() {
+          count += speed;
+
+          if (count < target) {
+            if (counter.classList.contains("plus-counter")) {
+              counter.innerText = Math.floor(count) + "+";
+            } else {
+              counter.innerText = Math.floor(count);
+            }
+            requestAnimationFrame(update);
+          } else {
+            if (counter.classList.contains("plus-counter")) {
+              counter.innerText = target + "+";
+            } else {
+              counter.innerText = target;
+            }
+          }
+        }
+
+        update();
+      });
+
+    }
+  });
+}, { threshold: 0.6 });
+
+
+observer.observe(document.getElementById("achievements"));
+
+
+
+// HEADER SCROLL BACKGROUND
+window.addEventListener("scroll", ()=>{
+  if(window.scrollY > 50){document.querySelector("header").classList.add("scrolled");}
+  else{document.querySelector("header").classList.remove("scrolled");}
+});
+function scrollServices(direction) {
+  const container = document.getElementById("servicesContainer");
+  const scrollAmount = 320; // how much it moves per click
+  container.scrollLeft += direction * scrollAmount;
+}
+const alreadyPopup = document.getElementById("alreadyPopup");
+
+function closeAlready(){
+  alreadyPopup.style.display = "none";
+}
+
+// 🔁 CHECK ALREADY REGISTERED ON PAGE LOAD
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>
+
+
+
+
+
